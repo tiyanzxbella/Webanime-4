@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="id">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="theme-color" content="#0c70de" />
+        <meta name="msapplication-navbutton-color" content="#0c70de" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#0c70de" />
+        <title>MyAnimeKu | Nonton Anime Sub Indo Gratis</title>
+        <meta name="description" content="MyAnimeKu adalah platform streaming anime subtitle Indonesia terlengkap dan terupdate. Nonton ribuan anime terbaru dengan kualitas HD, subtitle Indonesia berkualitas, update setiap hari. Gratis tanpa ribet!" />
+        <meta name="robots" content="max-image-preview:large" />
+        <!-- JS Libraries -->
+        <!-- ICON -->
+        <link rel="icon" href="https://myanimeku.com/img/1759396303_favico-myanimeku-removebg-preview.png" sizes="32x32" />
+        <link rel="icon" href="https://myanimeku.com/img/1759396303_favico-myanimeku-removebg-preview.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="https://myanimeku.com/img/1759396303_favico-myanimeku-removebg-preview.png" />
+        <meta name="msapplication-TileImage" content="https://myanimeku.com/img/1759396303_favico-myanimeku-removebg-preview.png" />
+        <!-- Dashicons WP -->
+        <!-- Versi terbaru Font Awesome (6.x) -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- WordPress & Theme Styles (lokal) -->
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/dashicons.min.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/style.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/owl.carousel.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/jquery.qtip.min.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/animeindo-style.css" />
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/episode-style.css" />
+        <!-- CRITICAL: Load grid-fix.css LAST to override style.css -->
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/grid-fix.css" />
+        <!-- CRITICAL: Load darkmode.css LAST to override all light mode styles -->
+        <link rel="stylesheet" href="https://myanimeku.com/assets/css/darkmode.css" />
+        <!-- Emoji Support -->
+        <script src="https://myanimeku.com/assets/js/wp-emoji-release.min.js" defer></script>
+        <!-- JS Libraries (lokal) -->
+        <!-- SweetAlert2 CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://myanimeku.com/assets/js/jquery.min.js"></script>
+        <script src="https://myanimeku.com/assets/js/tsfn.js"></script>
+        <script src="https://myanimeku.com/assets/js/tabs.js"></script>
+        <script src="https://myanimeku.com/assets/js/popular_widget.js"></script>
+        <!-- CSS OwlCarousel -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+        <!-- jQuery + OwlCarousel JS -->
+        <!-- Google Analytics -->
+        <style>
+            /* CRITICAL: Prevent FOUC (Flash of Unstyled Content) */
+            body {
+                opacity: 0;
+                transition: opacity 0.1s ease-in;
+            }
+
+            body.loaded {
+                opacity: 1 !important;
+            }
+
+            /* Apply dark mode immediately if saved in localStorage */
+            body.darkmode {
+                background: #16151d !important;
+                color: #CCC !important;
+                opacity: 1 !important;
+            }
+
+            /* Apply light mode immediately if saved in localStorage */
+            body.lightmode {
+                background: #F5F7FA !important;
+                color: #2C3E50 !important;
+                opacity: 1 !important;
+            }
+
+            /* AnimeIndo Style - Color Scheme */
+            :root {
+                --primary-blue: #4A90E2;
+                --dark-blue: #3A7BC8;
+                --light-gray: #F5F7FA;
+                --text-dark: #2C3E50;
+                --border-color: #E1E8ED;
+            }
+
+            body {
+                background: #F5F7FA !important;
+                font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
+            }
+
+            /* Header Styling */
+            .th {
+                background: var(--primary-blue) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                height: 60px;
+            }
+
+            #main-menu {
+                background: var(--primary-blue) !important;
+                margin-bottom: 20px;
+                box-shadow: none;
+            }
+
+            #main-menu ul li a {
+                color: #FFF !important;
+                font-weight: 500;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            #main-menu ul li a:hover {
+                background: rgba(255, 255, 255, 0.15) !important;
+                border-radius: 4px;
+            }
+
+            /* Search Bar */
+            .searchx #form #s {
+                border-radius: 20px;
+                border: none;
+                padding: 8px 40px 8px 15px;
+                background: rgba(255, 255, 255, 0.95);
+            }
+
+            .searchx #form #submitsearch {
+                border-radius: 20px;
+            }
+
+            /* Theme Toggle */
+            #thememode {
+                background: rgba(255, 255, 255, 0.2);
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+
+            /* Anime Cards */
+            .bs .bsx {
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                background: #FFF;
+            }
+
+            .bs .bsx:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            }
+
+            .bs .bsx .limit img {
+                transition: transform 0.3s ease;
+            }
+
+            .bs .bsx:hover .limit img {
+                transform: scale(1.05);
+            }
+
+            /* Episode Badge */
+            .bs .bsx .limit .typem {
+                position: absolute;
+                bottom: 8px;
+                left: 8px;
+                font-size: 11px;
+                padding: 4px 8px;
+                border-radius: 4px;
+                z-index: 1;
+                color: #FFF;
+                background: var(--primary-blue);
+                font-weight: 600;
+            }
+
+            .bs .bsx .limit .typew {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                font-size: 10px;
+                padding: 3px 6px;
+                border-radius: 4px;
+                z-index: 1;
+                color: #FFF;
+                background: rgba(0, 0, 0, 0.6);
+                font-weight: 500;
+            }
+
+            .bs .bsx .limit .typez {
+                background: #FF6B6B !important;
+            }
+
+            /* Status Badge */
+            .status {
+                background: #51CF66 !important;
+                font-size: 11px !important;
+                padding: 3px 8px !important;
+                border-radius: 4px !important;
+            }
+
+            /* Releases Header */
+            .releases {
+                background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)) !important;
+                color: #FFF !important;
+                padding: 12px 15px !important;
+                border-radius: 8px 8px 0 0 !important;
+                font-weight: 600 !important;
+            }
+
+            .releases.hothome {
+                background: linear-gradient(135deg, #FF6B6B, #EE5A52) !important;
+            }
+
+            .releases.latesthome {
+                background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)) !important;
+            }
+
+            .releases h2,
+            .releases h3 {
+                color: #FFF !important;
+                margin: 0 !important;
+                font-size: 16px !important;
+            }
+
+            /* Sidebar Styling */
+            #sidebar {
+                background: transparent;
+            }
+
+            #sidebar .section {
+                background: #FFF;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                overflow: hidden;
+            }
+
+            /* Filter Buttons */
+            .dropdown-toggle {
+                background: #FFF !important;
+                border: 1px solid var(--border-color) !important;
+                color: var(--text-dark) !important;
+                padding: 10px 15px !important;
+                border-radius: 6px !important;
+                font-size: 14px !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .dropdown-toggle:hover {
+                border-color: var(--primary-blue) !important;
+                box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2) !important;
+            }
+
+            .dropdown-menu {
+                border-radius: 6px !important;
+                border: 1px solid var(--border-color) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            }
+
+            /* Search Button */
+            .btn-custom-search,
+            #load-more {
+                background: var(--primary-blue) !important;
+                border: none !important;
+                color: #FFF !important;
+                padding: 10px 20px !important;
+                border-radius: 6px !important;
+                font-weight: 500 !important;
+                transition: all 0.3s ease !important;
+                cursor: pointer !important;
+            }
+
+            .btn-custom-search:hover,
+            #load-more:hover {
+                background: var(--dark-blue) !important;
+                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3) !important;
+                transform: translateY(-2px) !important;
+            }
+
+            /* Genre Grid */
+            .genre-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+                list-style: none;
+                padding: 15px;
+                margin: 0;
+            }
+
+            .genre-grid li {
+                background: var(--light-gray);
+                padding: 10px;
+                border-radius: 6px;
+                text-align: center;
+                transition: all 0.3s ease;
+                border: 1px solid var(--border-color);
+            }
+
+            .genre-grid li:hover {
+                background: var(--primary-blue);
+                border-color: var(--primary-blue);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+            }
+
+            .genre-grid li a {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 13px;
+                transition: color 0.3s ease;
+            }
+
+            .genre-grid li:hover a {
+                color: #FFF;
+            }
+
+            /* Ads Styling */
+            #ad-box img,
+            .ad-box img {
+                max-width: 100%;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .ad-box {
+                text-align: center;
+                padding: 15px;
+            }
+
+            /* Carousel */
+            .full-cover-carousel .slide-item {
+                position: relative;
+                overflow: hidden;
+                border-radius: 12px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            }
+
+            .full-cover-carousel .slide-item img {
+                width: 100%;
+                height: 380px;
+                object-fit: cover;
+                display: block;
+            }
+
+            .full-cover-carousel .caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+                color: white;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .full-cover-carousel .caption h3 {
+                margin: 0;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+            .full-cover-carousel .caption p {
+                margin: 8px 0 0;
+                font-size: 14px;
+                opacity: 0.9;
+            }
+
+            /* Anime Title */
+            .bs .bsx .tt {
+                padding: 12px;
+                font-size: 13px;
+                font-weight: 500;
+                color: var(--text-dark);
+                line-height: 1.4;
+            }
+
+            /* Popular Series */
+            .serieslist ul li {
+                border-bottom: 1px solid var(--border-color);
+                transition: background 0.3s ease;
+            }
+
+            .serieslist ul li:hover {
+                background: var(--light-gray);
+            }
+
+            /* Ongoing Series */
+            .ongoingseries ul li a {
+                transition: all 0.3s ease;
+                padding: 10px;
+                border-radius: 4px;
+            }
+
+            .ongoingseries ul li a:hover {
+                background: var(--light-gray);
+                color: var(--primary-blue) !important;
+            }
+
+            /* Content Wrapper */
+            #content {
+                max-width: 1280px;
+                padding: 20px 0;
+            }
+
+            .wrapper {
+                margin: 0 15px;
+            }
+
+            /* Bixbox */
+            .bixbox {
+                background: #FFF;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                overflow: hidden;
+            }
+
+            .listupd {
+                padding: 15px;
+            }
+
+            /* Anime Detail Page */
+            .animefull {
+                padding: 20px;
+            }
+
+            .ts-breadcrumb {
+                background: #FFF;
+                padding: 12px 15px;
+                border-radius: 8px;
+                margin-bottom: 15px;
+                font-size: 13px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .ts-breadcrumb a {
+                color: var(--primary-blue);
+                transition: color 0.3s ease;
+            }
+
+            .ts-breadcrumb a:hover {
+                color: var(--dark-blue);
+                text-decoration: underline;
+            }
+
+            /* Watch Page Buttons */
+            .btn-primary,
+            button[type="submit"] {
+                background: var(--primary-blue) !important;
+                border: none !important;
+                border-radius: 6px !important;
+                padding: 10px 20px !important;
+                font-weight: 500 !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .btn-primary:hover {
+                background: var(--dark-blue) !important;
+                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3) !important;
+            }
+
+            /* Episode Grid */
+            .eplister ul {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+                padding: 15px;
+                list-style: none;
+            }
+
+            .eplister ul li {
+                margin: 0;
+            }
+
+            .eplister ul li a {
+                display: block;
+                background: var(--light-gray);
+                border: 1px solid var(--border-color);
+                padding: 12px;
+                text-align: center;
+                border-radius: 6px;
+                color: var(--text-dark);
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+            .eplister ul li a:hover {
+                background: var(--primary-blue);
+                color: #FFF;
+                border-color: var(--primary-blue);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+            }
+
+            /* Video Player */
+            .video-wrapper {
+                position: relative;
+                background: #000;
+                border-radius: 8px;
+                overflow: hidden;
+                margin-bottom: 20px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .video-wrapper iframe {
+                width: 100%;
+                min-height: 500px;
+                border: none;
+            }
+
+            /* Download Buttons */
+            .download-links {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .download-links a {
+                background: var(--primary-blue);
+                color: #FFF;
+                padding: 12px 20px;
+                border-radius: 6px;
+                text-align: center;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+            .download-links a:hover {
+                background: var(--dark-blue);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .genre-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                .eplister ul {
+                    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                }
+
+                .full-cover-carousel .slide-item img {
+                    height: 250px;
+                }
+
+                .wrapper {
+                    margin: 0 10px;
+                }
+            }
+        </style>
+        <style>
+            #content {
+                padding: 20px;
+            }
+
+            .main-flex {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .left-column {
+                flex: 1 1 70%;
+                min-width: 300px;
+            }
+
+            .right-sidebar {
+                flex: 1 1 28%;
+                min-width: 250px;
+            }
+
+            .slidtop {
+                margin-bottom: 20px;
+            }
+
+            .owl-carousel .slide-item {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .owl-carousel .slide-item img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 10px;
+            }
+
+            .caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.6);
+                padding: 10px;
+                color: #fff;
+                text-align: left;
+            }
+
+            #sidebar .filter {
+                margin-bottom: 10px;
+            }
+
+            #sidebar .dropdown-menu {
+                max-height: 200px;
+                overflow-y: auto;
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .subbox {
+                margin-top: 10px;
+            }
+
+            @media (max-width: 768px) {
+                .main-flex {
+                    flex-direction: column;
+                }
+            }
+
+            .dropdown .dropdown-menu {
+                display: none;
+                margin-top: 5px;
+            }
+
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu {
+                background: #fff;
+                border: 1px solid #ccc;
+                padding: 10px;
+                border-radius: 6px;
+                max-height: 200px;
+                overflow-y: auto;
+                z-index: 100;
+            }
+
+            .dropdown-toggle {
+                background: #f0f0f0;
+                padding: 8px 12px;
+                width: 100%;
+                text-align: left;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+            }
+
+            .dropdown-toggle:after {
+                float: right;
+            }
+
+            #load-more {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--primary-blue) !important;
+                color: #fff !important;
+                padding: 10px 20px;
+                font-size: 15px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+                font-weight: 500;
+            }
+
+            #load-more:hover {
+                background: var(--dark-blue) !important;
+                box-shadow: 0 6px 15px rgba(74, 144, 226, 0.4);
+                transform: translateY(-2px);
+            }
+
+            #load-more i {
+                margin-left: 8px;
+            }
+        </style>
+    </head>
+    <body itemscope="itemscope" itemtype="http://schema.org/WebPage">
+        <div id="shadow" style="height: 3957px; display: none"></div>
+        <!-- Top Navigation -->
+        <div class="th">
+            <div class="centernav bound">
+                <div class="shme">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <header class="mainheader" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+                    <div class="site-branding logox">
+                        <h1 class="logos">
+                            <a title="MyAnimeKu - Nonton Anime Sub Indo Terlengkap" itemprop="url" href="https://myanimeku.com/">
+                                <img itemprop="image" src="https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview1.png" width="195" height="35" alt="MyAnimeKu - Nonton Anime Sub Indo Terlengkap" class="logo-desktop" />
+                                <span class="hdl">MyAnimeKu - Nonton Anime Sub Indo Terlengkap</span>
+                            </a>
+                        </h1>
+                        <span class="mobilelogo">
+                            <a href="https://myanimeku.com/">
+                                <img src="https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview1.png" width="195" height="35" alt="MyAnimeKu - Nonton Anime Sub Indo Terlengkap" />
+                            </a>
+                        </span>
+                        <meta itemprop="name" content="MyAnimeKu" />
+                    </div>
+                </header>
+                <!-- Search Form Desktop -->
+                <div class="searchx searchx-desktop">
+                    <form action="https://myanimeku.com/web/search" id="form" method="post">
+                        <input id="s" itemprop="query-input" class="search-live" type="text" placeholder="Cari Anime" name="keyword" autocomplete="off" />
+                        <button type="submit" id="submitsearch" aria-label="search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+                <!-- Theme Switcher -->
+                <div id="thememode">
+                    <label class="switch">
+                        <input type="checkbox" aria-labelledby="switchtext" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <!-- Mobile Search Icon -->
+                <div class="srcmob-icon">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+            </div>
+            <!-- Search Form Mobile (Hidden by default) -->
+            <div class="searchx searchx-mobile">
+                <form action="https://myanimeku.com/web/search" id="form-mobile" method="post">
+                    <input id="s-mobile" itemprop="query-input" class="search-live" type="text" placeholder="Cari Anime" name="keyword" autocomplete="off" />
+                    <button type="submit" id="submitsearch-mobile" aria-label="search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="close-search" aria-label="close search">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+            <script>
+                // CRITICAL: Apply dark mode class IMMEDIATELY before page render
+                (function() {
+                    var savedMode = localStorage.getItem("thememode");
+                    if (savedMode === "darkmode") {
+                        document.body.classList.add("darkmode");
+                        document.body.classList.remove("lightmode");
+                    } else {
+                        document.body.classList.add("lightmode");
+                        document.body.classList.remove("darkmode");
+                    }
+                })();
+                if (localStorage.getItem("thememode") == null) {
+                    jQuery(".logos img").attr("src", "https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview.png");
+                    jQuery("#thememode input[type='checkbox']").prop("checked", false);
+                } else if (localStorage.getItem("thememode") == "lightmode") {
+                    jQuery(".logos img").attr("src", "https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview1.png");
+                    jQuery("#thememode input[type='checkbox']").prop("checked", false);
+                } else {
+                    jQuery(".logos img").attr("src", "https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview.png");
+                    jQuery("#thememode input[type='checkbox']").prop("checked", true);
+                }
+                // Mobile search toggle
+                jQuery(document).ready(function($) {
+                    $('.srcmob-icon').click(function() {
+                        $('.th').toggleClass('show-search');
+                        $('.searchx-mobile').slideToggle(200);
+                        if ($('.th').hasClass('show-search')) {
+                            $('#s-mobile').focus();
+                        }
+                    });
+                    $('.close-search').click(function() {
+                        $('.th').removeClass('show-search');
+                        $('.searchx-mobile').slideUp(200);
+                    });
+                });
+            </script>
+        </div>
+        </div>
+        <!-- Main Navigation -->
+        <nav id="main-menu" class="mm">
+            <div class="centernav">
+                <div class="bound">
+                    <span itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+                        <ul id="menu-menu" class="menu">
+                            <li class="menu-item current-menu-item">
+                                <a href="https://myanimeku.com/">
+                                    <span>Home</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://myanimeku.com/web/bookmark">
+                                    <span>Bookmark</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://myanimeku.com/web/ongoing">
+                                    <span>Ongoing Series</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://myanimeku.com/web/member">
+                                    <span>Member</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://myanimeku.com/web/login">
+                                    <span>Login</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </span>
+                    <a href="" class="surprise">
+                        <i class="far fa-star"></i> Donasi Me! </a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </nav>
+        <!-- Konten Utama -->
+        <div id="content">
+            <div class="wrapper">
+                <div class="postbody">
+                    <!-- Modern Slider AnimeIndo Style -->
+                    <div class="modern-slider-container">
+                        <div class="owl-carousel owl-theme modern-anime-slider">
+                            <div class="modern-slide-item">
+                                <!-- Blurred Background -->
+                                <div class="slide-background" style="background-image: url('https://otakudesu.cloud/wp-content/uploads/2019/05/Boku-no-Hero-Academia-Sub-Indo.jpg');"></div>
+                                <!-- Content Container -->
+                                <div class="slide-content-wrapper">
+                                    <!-- Left: Anime Poster -->
+                                    <div class="slide-poster">
+                                        <a href="https://myanimeku.com/anime/boku-demia-subtitle-indonesia">
+                                            <img src="https://otakudesu.cloud/wp-content/uploads/2019/05/Boku-no-Hero-Academia-Sub-Indo.jpg" alt="Boku no Hero Academia" />
+                                            <div class="poster-status completed"> COMPLETED </div>
+                                        </a>
+                                    </div>
+                                    <!-- Right: Anime Info -->
+                                    <div class="slide-info">
+                                        <h2 class="slide-title">
+                                            <a href="https://myanimeku.com/anime/boku-demia-subtitle-indonesia"> Boku no Hero Academia </a>
+                                        </h2>
+                                        <div class="slide-meta">
+                                            <div class="meta-rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>8.43</span>
+                                            </div>
+                                            <div class="meta-status">
+                                                <i class="fas fa-tv"></i>
+                                                <span>Completed</span>
+                                            </div>
+                                            <div class="meta-episodes">
+                                                <i class="fas fa-film"></i>
+                                                <span>13 Episodes</span>
+                                            </div>
+                                        </div>
+                                        <div class="slide-genres">
+                                            <span class="genre-tag">Action</span>
+                                            <span class="genre-tag">Comedy</span>
+                                            <span class="genre-tag">School</span>
+                                            <span class="genre-tag">Shounen</span>
+                                        </div>
+                                        <p class="slide-description"> Di dunia sekarang ini hampir semua orang terlahir dengan suatu kekuatan super dalam diri mereka yang disebut dengan “Quirk” (Kosei). Namun berbed... </p>
+                                        <div class="slide-actions">
+                                            <a href="https://myanimeku.com/anime/boku-demia-subtitle-indonesia" class="btn-watch-now">
+                                                <i class="fas fa-play"></i> Watch Now </a>
+                                            <a href="https://myanimeku.com/anime/boku-demia-subtitle-indonesia" class="btn-details">
+                                                <i class="fas fa-info-circle"></i> Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modern-slide-item">
+                                <!-- Blurred Background -->
+                                <div class="slide-background" style="background-image: url('https://otakudesu.best/wp-content/uploads/2025/10/One-Punch-Man-Season-3.jpg');"></div>
+                                <!-- Content Container -->
+                                <div class="slide-content-wrapper">
+                                    <!-- Left: Anime Poster -->
+                                    <div class="slide-poster">
+                                        <a href="https://myanimeku.com/anime/punch-man-s3-sub-indo">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2025/10/One-Punch-Man-Season-3.jpg" alt="One Punch Man Season 3" />
+                                            <div class="poster-status ongoing"> ONGOING </div>
+                                        </a>
+                                    </div>
+                                    <!-- Right: Anime Info -->
+                                    <div class="slide-info">
+                                        <h2 class="slide-title">
+                                            <a href="https://myanimeku.com/anime/punch-man-s3-sub-indo"> One Punch Man Season 3 </a>
+                                        </h2>
+                                        <div class="slide-meta">
+                                            <div class="meta-rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>7.14</span>
+                                            </div>
+                                            <div class="meta-status">
+                                                <i class="fas fa-tv"></i>
+                                                <span>Ongoing</span>
+                                            </div>
+                                        </div>
+                                        <div class="slide-genres">
+                                            <span class="genre-tag">Action</span>
+                                            <span class="genre-tag">Adult Cast</span>
+                                            <span class="genre-tag">Comedy</span>
+                                            <span class="genre-tag">Parody</span>
+                                        </div>
+                                        <div class="slide-actions">
+                                            <a href="https://myanimeku.com/anime/punch-man-s3-sub-indo" class="btn-watch-now">
+                                                <i class="fas fa-play"></i> Watch Now </a>
+                                            <a href="https://myanimeku.com/anime/punch-man-s3-sub-indo" class="btn-details">
+                                                <i class="fas fa-info-circle"></i> Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modern-slide-item">
+                                <!-- Blurred Background -->
+                                <div class="slide-background" style="background-image: url('https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg');"></div>
+                                <!-- Content Container -->
+                                <div class="slide-content-wrapper">
+                                    <!-- Left: Anime Poster -->
+                                    <div class="slide-poster">
+                                        <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo">
+                                            <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg" alt="Kaijuu 8-gou Season 2" />
+                                            <div class="poster-status ongoing"> ONGOING </div>
+                                        </a>
+                                    </div>
+                                    <!-- Right: Anime Info -->
+                                    <div class="slide-info">
+                                        <h2 class="slide-title">
+                                            <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo"> Kaijuu 8-gou Season 2 </a>
+                                        </h2>
+                                        <div class="slide-meta">
+                                            <div class="meta-status">
+                                                <i class="fas fa-tv"></i>
+                                                <span>Ongoing</span>
+                                            </div>
+                                        </div>
+                                        <div class="slide-genres">
+                                            <span class="genre-tag">Action</span>
+                                            <span class="genre-tag">Fantasy</span>
+                                            <span class="genre-tag">Military</span>
+                                            <span class="genre-tag">Sci-Fi</span>
+                                        </div>
+                                        <p class="slide-description"> Musim kedua anime Kaijuu 8-gou... </p>
+                                        <div class="slide-actions">
+                                            <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo" class="btn-watch-now">
+                                                <i class="fas fa-play"></i> Watch Now </a>
+                                            <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo" class="btn-details">
+                                                <i class="fas fa-info-circle"></i> Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modern-slide-item">
+                                <!-- Blurred Background -->
+                                <div class="slide-background" style="background-image: url('https://otakudesu.cloud/wp-content/uploads/2025/07/Gachiakuta.jpg');"></div>
+                                <!-- Content Container -->
+                                <div class="slide-content-wrapper">
+                                    <!-- Left: Anime Poster -->
+                                    <div class="slide-poster">
+                                        <a href="https://myanimeku.com/anime/gachiakuta-sub-indo">
+                                            <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Gachiakuta.jpg" alt="Gachiakuta" />
+                                            <div class="poster-status ongoing"> ONGOING </div>
+                                        </a>
+                                    </div>
+                                    <!-- Right: Anime Info -->
+                                    <div class="slide-info">
+                                        <h2 class="slide-title">
+                                            <a href="https://myanimeku.com/anime/gachiakuta-sub-indo"> Gachiakuta </a>
+                                        </h2>
+                                        <div class="slide-meta">
+                                            <div class="meta-rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>7.78</span>
+                                            </div>
+                                            <div class="meta-status">
+                                                <i class="fas fa-tv"></i>
+                                                <span>Ongoing</span>
+                                            </div>
+                                            <div class="meta-episodes">
+                                                <i class="fas fa-film"></i>
+                                                <span>24 Episodes</span>
+                                            </div>
+                                        </div>
+                                        <div class="slide-genres">
+                                            <span class="genre-tag">Action</span>
+                                            <span class="genre-tag">Fantasy</span>
+                                            <span class="genre-tag">Shounen</span>
+                                        </div>
+                                        <div class="slide-actions">
+                                            <a href="https://myanimeku.com/anime/gachiakuta-sub-indo" class="btn-watch-now">
+                                                <i class="fas fa-play"></i> Watch Now </a>
+                                            <a href="https://myanimeku.com/anime/gachiakuta-sub-indo" class="btn-details">
+                                                <i class="fas fa-info-circle"></i> Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modern-slide-item">
+                                <!-- Blurred Background -->
+                                <div class="slide-background" style="background-image: url('https://otakudesu.best/wp-content/uploads/2025/10/Tomodachi-no-Imouto-ga-Ore-ni-dake-Uzai.jpg');"></div>
+                                <!-- Content Container -->
+                                <div class="slide-content-wrapper">
+                                    <!-- Left: Anime Poster -->
+                                    <div class="slide-poster">
+                                        <a href="https://myanimeku.com/anime/tomodachi-imouto-dake-uzai-sub-indo">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2025/10/Tomodachi-no-Imouto-ga-Ore-ni-dake-Uzai.jpg" alt="Tomodachi no Imouto ga Ore ni dake Uzai" />
+                                            <div class="poster-status ongoing"> ONGOING </div>
+                                        </a>
+                                    </div>
+                                    <!-- Right: Anime Info -->
+                                    <div class="slide-info">
+                                        <h2 class="slide-title">
+                                            <a href="https://myanimeku.com/anime/tomodachi-imouto-dake-uzai-sub-indo"> Tomodachi no Imouto ga Ore ni dake Uzai </a>
+                                        </h2>
+                                        <div class="slide-meta">
+                                            <div class="meta-status">
+                                                <i class="fas fa-tv"></i>
+                                                <span>Ongoing</span>
+                                            </div>
+                                            <div class="meta-episodes">
+                                                <i class="fas fa-film"></i>
+                                                <span>12 Episodes</span>
+                                            </div>
+                                        </div>
+                                        <div class="slide-genres">
+                                            <span class="genre-tag">Comedy</span>
+                                            <span class="genre-tag">Romance</span>
+                                            <span class="genre-tag">School</span>
+                                        </div>
+                                        <div class="slide-actions">
+                                            <a href="https://myanimeku.com/anime/tomodachi-imouto-dake-uzai-sub-indo" class="btn-watch-now">
+                                                <i class="fas fa-play"></i> Watch Now </a>
+                                            <a href="https://myanimeku.com/anime/tomodachi-imouto-dake-uzai-sub-indo" class="btn-details">
+                                                <i class="fas fa-info-circle"></i> Details </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 🔽 AD PLACEMENT 3: Between Slider and Popular Today -->
+                    <div class="ad-section" style="margin-top: 20px; margin-bottom: 20px; text-align: center;">
+                        <script>
+                            atOptions = {
+                                'key': '28b0913214c27133bc99712228c9ed9e',
+                                'format': 'iframe',
+                                'height': 90,
+                                'width': 728,
+                                'params': {}
+                            };
+                        </script>
+                        <script src="https://www.highperformanceformat.com/28b0913214c27133bc99712228c9ed9e/invoke.js"></script>
+                    </div>
+                    <div class="bixbox bbnofrm" id="popular-today-section">
+                        <div class="releases hothome">
+                            <h2>Popular Today</h2>
+                        </div>
+                        <div class="listupd normal">
+                            <div class="excstf popular-today-grid">
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status ongoing"> ONGOING </div>
+                                                <div class="new-episode-badge"> New > 27 Sep 2025 </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep ?</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="Kaijuu 8-gou Season 2" alt="Kaijuu 8-gou Season 2" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> Kaijuu 8-gou Season 2 </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/genjitsu-yusha-s2-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status completed"> COMPLETED </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep 13</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2022/03/Genjitsu-Shugi-Yuusha-no-Oukoku-Saikenki-Season-2-Sub-Indo.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2" alt="Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2 </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/3-gatsu-lion-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status completed"> COMPLETED </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep 22</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2017/06/3-gatsu-no-Lion-Sub-Indo.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="3-gatsu no Lion" alt="3-gatsu no Lion" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> 3-gatsu no Lion </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/gkdol-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status completed"> COMPLETED </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep 12</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2021/03/Gekidol-Sub-Indo.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="Gekidol" alt="Gekidol" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> Gekidol </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/2-5-jigen-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status completed"> COMPLETED </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep 24</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2025/01/2.5-jigen-no-Ririsa-Sub-Indo.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="2.5-jigen no Ririsa" alt="2.5-jigen no Ririsa" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> 2.5-jigen no Ririsa </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- ANIME CARD -->
+                                <article class="bs" itemscope itemtype="http://schema.org/CreativeWork">
+                                    <div class="bsx">
+                                        <a href="https://myanimeku.com/anime/amancu-season-2-sub-indo" itemprop="url" class="tip" rel="3408" data-hasqtip="0">
+                                            <div class="limit">
+                                                <div class="status completed"> COMPLETED </div>
+                                                <div class="typez">TV</div>
+                                                <div class="episode-count">Ep 12</div>
+                                                <div class="ply">
+                                                    <i class="far fa-play-circle"></i>
+                                                </div>
+                                                <img src="https://otakudesu.cloud/wp-content/uploads/2019/05/Amanchu-Season-2-Sub-Indo.jpg" class="ts-post-image" loading="lazy" itemprop="image" title="Amanchu! Season 2" alt="Amanchu! Season 2" width="350" height="490" />
+                                            </div>
+                                            <div class="tt"> Amanchu! Season 2 </div>
+                                        </a>
+                                    </div>
+                                </article>
+                                <!-- Anda bisa lanjut menyalin lebih banyak kartu di bagian ini -->
+                            </div>
+                            <!-- .excstf -->
+                        </div>
+                        <!-- .listupd -->
+                    </div>
+                    <!-- 🔽 Section Iklan -->
+                    <div class="ad-section" style="margin-top: 15px; text-align: center;">
+                        <script>
+                            atOptions = {
+                                'key': '28b0913214c27133bc99712228c9ed9e',
+                                'format': 'iframe',
+                                'height': 90,
+                                'width': 728,
+                                'params': {}
+                            };
+                        </script>
+                        <script src="https://www.highperformanceformat.com/28b0913214c27133bc99712228c9ed9e/invoke.js"></script>
+                    </div>
+                    <div class="bixbox bbnofrm">
+                        <div class="releases latesthome">
+                            <h3>Latest Release</h3>
+                        </div>
+                        <div class="listupd normal">
+                            <div id="anime-container" class="excstf"></div>
+                            <div class="hpage">
+                                <button id="load-more" class="r">Next <i class="fa fa-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .bixbox -->
+                </div>
+                <!-- SIDEBAR -->
+                <div id="sidebar">
+                    <!--Iklan-->
+                    <div class="section">
+                        <div class="ad-box">
+                            <script>
+                                atOptions = {
+                                    'key': '4ac77afa4007c2fd81e6c33f17b366a5',
+                                    'format': 'iframe',
+                                    'height': 600,
+                                    'width': 160,
+                                    'params': {}
+                                };
+                            </script>
+                            <script src="https://www.highperformanceformat.com/4ac77afa4007c2fd81e6c33f17b366a5/invoke.js"></script>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="releases">
+                            <h3>Filter Search</h3>
+                        </div>
+                        <div class="quickfilter">
+                            <form action="https://myanimeku.com/web/filter" class="filters" method="post">
+                                <span class="sec1">
+                                    <!-- GENRE -->
+                                    <div class="filter dropdown">
+                                        <button type="button" class="dropdown-toggle">Genre <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu c4 scrollz" id="genre-list"></ul>
+                                    </div>
+                                    <!-- STUDIO -->
+                                    <div class="filter dropdown">
+                                        <button type="button" class="dropdown-toggle">Studio <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu c4 scrollz" id="studio-list"></ul>
+                                    </div>
+                                    <!-- TYPE -->
+                                    <div class="filter dropdown">
+                                        <button type="button" class="dropdown-toggle">Type <i class="fa fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu c4 scrollz" id="type-list"></ul>
+                                    </div>
+                                </span>
+                                <!-- SUBMIT BUTTON -->
+                                <span class="sec2">
+                                    <div class="filter submit">
+                                        <button type="submit" class="btn btn-custom-search">
+                                            <i class="fa fa-search"></i> Search </button>
+                                    </div>
+                                </span>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!--themesia cache end 2025-06-11 06:36:22 0.00168-->
+                    <div class="section">
+                        <div class="releases">
+                            <h3>Popular Series</h3>
+                        </div>
+                        <div class="series-gen">
+                            <ul class="nav-tabs">
+                                <li class="active">
+                                    <a href="#popular-minggu" data-toggle="tab">Minggu</a>
+                                </li>
+                                <li>
+                                    <a href="#popular-bulan" data-toggle="tab">Bulan</a>
+                                </li>
+                                <li>
+                                    <a href="#popular-all" data-toggle="tab">All</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="popular-minggu">
+                                    <div class="serieslist">
+                                        <ul>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg" alt="Kaijuu 8-gou Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Kaijuu 8-gou Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">28</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/2-5-jigen-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2025/01/2.5-jigen-no-Ririsa-Sub-Indo.jpg" alt="2.5-jigen no Ririsa" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>2.5-jigen no Ririsa</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">19</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/chitose-ramune-bin-naka-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.best/wp-content/uploads/2025/10/Chitose-kun-wa-Ramune-Bin-no-Naka-Subtitle-Indonesia.jpg" alt="Chitose-kun wa Ramune Bin no Naka" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Chitose-kun wa Ramune Bin no Naka</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">19</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/genjitsu-yusha-s2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2022/03/Genjitsu-Shugi-Yuusha-no-Oukoku-Saikenki-Season-2-Sub-Indo.jpg" alt="Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">16</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/tamon-docchi-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.best/wp-content/uploads/2026/01/Tamon-kun-Ima-Docch.jpg" alt="Tamon-kun Ima Docchi!?" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Tamon-kun Ima Docchi!?</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">16</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="popular-bulan">
+                                    <div class="serieslist">
+                                        <ul>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg" alt="Kaijuu 8-gou Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Kaijuu 8-gou Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">55</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/genjitsu-yusha-s2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2022/03/Genjitsu-Shugi-Yuusha-no-Oukoku-Saikenki-Season-2-Sub-Indo.jpg" alt="Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Genjitsu Shugi Yuusha no Oukoku Saikenki Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">49</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/gkdol-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2021/03/Gekidol-Sub-Indo.jpg" alt="Gekidol" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Gekidol</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">48</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/3-gatsu-lion-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2017/06/3-gatsu-no-Lion-Sub-Indo.jpg" alt="3-gatsu no Lion" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>3-gatsu no Lion</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">47</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/amancu-season-2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2019/05/Amanchu-Season-2-Sub-Indo.jpg" alt="Amanchu! Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Amanchu! Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">33</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="popular-all">
+                                    <div class="serieslist">
+                                        <ul>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/boku-demia-subtitle-indonesia">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2019/05/Boku-no-Hero-Academia-Sub-Indo.jpg" alt="Boku no Hero Academia" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Boku no Hero Academia</h4>
+                                                        <span>BD</span>
+                                                    </div>
+                                                    <div class="ctr">1771</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/punch-man-s3-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.best/wp-content/uploads/2025/10/One-Punch-Man-Season-3.jpg" alt="One Punch Man Season 3" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>One Punch Man Season 3</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">1187</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/kaiju-gou-s2-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Kaijuu-8-gou-2nd-Season.jpg" alt="Kaijuu 8-gou Season 2" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Kaijuu 8-gou Season 2</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">1137</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/gachiakuta-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.cloud/wp-content/uploads/2025/07/Gachiakuta.jpg" alt="Gachiakuta" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Gachiakuta</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">875</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://myanimeku.com/anime/tomodachi-imouto-dake-uzai-sub-indo">
+                                                    <div class="imgseries">
+                                                        <img src="https://otakudesu.best/wp-content/uploads/2025/10/Tomodachi-no-Imouto-ga-Ore-ni-dake-Uzai.jpg" alt="Tomodachi no Imouto ga Ore ni dake Uzai" loading="lazy" />
+                                                    </div>
+                                                    <div class="leftseries">
+                                                        <h4>Tomodachi no Imouto ga Ore ni dake Uzai</h4>
+                                                        <span>TV</span>
+                                                    </div>
+                                                    <div class="ctr">743</div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="releases">
+                            <h3>Ongoing Series</h3>
+                        </div>
+                        <div class="ongoingseries">
+                            <ul>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/eris-seihai-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/153574.jpg" alt="Eris no Seihai" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Eris no Seihai</h4>
+                                            <span>Eris no Seihai Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/jjk-s3-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/154488.jpg" alt="Jujutsu Kaisen Season 3" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Jujutsu Kaisen Season 3</h4>
+                                            <span>Jujutsu Kaisen Season 3 Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/omae-gotoki-maou-kateru-omouna-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/Omae-Gotoki-ga-Maou-ni-Kateru-to-Omouna.jpg" alt="Omae Gotoki ga Maou ni Kateru to Omouna" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Omae Gotoki ga Maou ni Kateru to Omouna</h4>
+                                            <span>Omae Gotoki ga Maou ni Kateru to Omouna Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/mf-ghst-s3-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/154458.jpg" alt="MF Ghost Season 3" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>MF Ghost Season 3</h4>
+                                            <span>MF Ghost Season 3 Episode 9 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/mato-seihei-slave-s2-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/148737.jpg" alt="Mato Seihei no Slave Season 2" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Mato Seihei no Slave Season 2</h4>
+                                            <span>Mato Seihei no Slave Season 2 Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/yuusha-shosu-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/151911.jpg" alt="Yuusha-kei ni Shosu" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Yuusha-kei ni Shosu</h4>
+                                            <span>Yuusha-kei ni Shosu Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/arne-jikenbo-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/Arne-no-Jikenbo.jpg" alt="Arne no Jikenbo" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Arne no Jikenbo</h4>
+                                            <span>Arne no Jikenbo Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/tamon-docchi-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/Tamon-kun-Ima-Docch.jpg" alt="Tamon-kun Ima Docchi!?" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Tamon-kun Ima Docchi!?</h4>
+                                            <span>Tamon-kun Ima Docchi!? Episode 9 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/yuusha-party-kiyoubinbou-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/Yuusha-Party-wo-Oidasareta-Kiyoubinbou.jpg" alt="Yuusha Party wo Oidasareta Kiyoubinbou" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Yuusha Party wo Oidasareta Kiyoubinbou</h4>
+                                            <span>Yuusha Party wo Oidasareta Kiyoubinbou Episode 9 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/anime/jigoku-sensei-2025-part-2-sub-indo">
+                                        <div class="imgseries">
+                                            <img src="https://otakudesu.best/wp-content/uploads/2026/01/Jigoku-Sensei-Nube-2025-Part-2.jpg" alt="Jigoku Sensei Nube (2025) Part 2" loading="lazy" />
+                                        </div>
+                                        <div class="leftseries">
+                                            <h4>Jigoku Sensei Nube (2025) Part 2</h4>
+                                            <span>Jigoku Sensei Nube (2025) Part 2 Episode 8 Subtitle Indonesia</span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Genres List (Scrollable) -->
+                    <div class="section">
+                        <div class="releases">
+                            <h3>
+                                <i class="fas fa-tags"></i> Genres
+                            </h3>
+                        </div>
+                        <div class="genre-list-wrapper">
+                            <ul class="genre-list-scroll">
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/">
+                                        <i class="fas fa-circle"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Action">
+                                        <i class="fas fa-circle"></i> Action </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Adult+cast">
+                                        <i class="fas fa-circle"></i> Adult cast </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Adventure">
+                                        <i class="fas fa-circle"></i> Adventure </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Anthropomorphic">
+                                        <i class="fas fa-circle"></i> Anthropomorphic </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Cgdct">
+                                        <i class="fas fa-circle"></i> Cgdct </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Childcare">
+                                        <i class="fas fa-circle"></i> Childcare </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Comedy">
+                                        <i class="fas fa-circle"></i> Comedy </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Crime">
+                                        <i class="fas fa-circle"></i> Crime </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Crossdressing">
+                                        <i class="fas fa-circle"></i> Crossdressing </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Ction">
+                                        <i class="fas fa-circle"></i> Ction </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Delinquents">
+                                        <i class="fas fa-circle"></i> Delinquents </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Dementia">
+                                        <i class="fas fa-circle"></i> Dementia </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Demons">
+                                        <i class="fas fa-circle"></i> Demons </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Detective">
+                                        <i class="fas fa-circle"></i> Detective </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Drama">
+                                        <i class="fas fa-circle"></i> Drama </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Fall+2022">
+                                        <i class="fas fa-circle"></i> Fall 2022 </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Fantasy">
+                                        <i class="fas fa-circle"></i> Fantasy </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Game">
+                                        <i class="fas fa-circle"></i> Game </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Girls+love">
+                                        <i class="fas fa-circle"></i> Girls love </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Gore">
+                                        <i class="fas fa-circle"></i> Gore </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Gourmet">
+                                        <i class="fas fa-circle"></i> Gourmet </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Harem">
+                                        <i class="fas fa-circle"></i> Harem </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/High+stakes+game">
+                                        <i class="fas fa-circle"></i> High stakes game </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Historical">
+                                        <i class="fas fa-circle"></i> Historical </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Horror">
+                                        <i class="fas fa-circle"></i> Horror </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Idol">
+                                        <i class="fas fa-circle"></i> Idol </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Idols">
+                                        <i class="fas fa-circle"></i> Idols </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Isekai">
+                                        <i class="fas fa-circle"></i> Isekai </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Iyashikei">
+                                        <i class="fas fa-circle"></i> Iyashikei </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Josei">
+                                        <i class="fas fa-circle"></i> Josei </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Magic">
+                                        <i class="fas fa-circle"></i> Magic </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Mahou+shoujo">
+                                        <i class="fas fa-circle"></i> Mahou shoujo </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Mahou+shoujo+site+sub+indo">
+                                        <i class="fas fa-circle"></i> Mahou shoujo site sub indo </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Martial+arts">
+                                        <i class="fas fa-circle"></i> Martial arts </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Mecha">
+                                        <i class="fas fa-circle"></i> Mecha </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Medical">
+                                        <i class="fas fa-circle"></i> Medical </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Military">
+                                        <i class="fas fa-circle"></i> Military </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Music">
+                                        <i class="fas fa-circle"></i> Music </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Mystery">
+                                        <i class="fas fa-circle"></i> Mystery </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Mythology">
+                                        <i class="fas fa-circle"></i> Mythology </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Omedy">
+                                        <i class="fas fa-circle"></i> Omedy </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Organized+crime">
+                                        <i class="fas fa-circle"></i> Organized crime </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Original+genres%3A+military">
+                                        <i class="fas fa-circle"></i> Original genres: military </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Otaku+culture">
+                                        <i class="fas fa-circle"></i> Otaku culture </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Parody">
+                                        <i class="fas fa-circle"></i> Parody </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Performing+arts">
+                                        <i class="fas fa-circle"></i> Performing arts </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Pets">
+                                        <i class="fas fa-circle"></i> Pets </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Police">
+                                        <i class="fas fa-circle"></i> Police </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Psychological">
+                                        <i class="fas fa-circle"></i> Psychological </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Racing">
+                                        <i class="fas fa-circle"></i> Racing </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Reincarnation">
+                                        <i class="fas fa-circle"></i> Reincarnation </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Romance">
+                                        <i class="fas fa-circle"></i> Romance </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Samurai">
+                                        <i class="fas fa-circle"></i> Samurai </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/School">
+                                        <i class="fas fa-circle"></i> School </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Sci-fi">
+                                        <i class="fas fa-circle"></i> Sci-fi </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Seinen">
+                                        <i class="fas fa-circle"></i> Seinen </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Shoujo">
+                                        <i class="fas fa-circle"></i> Shoujo </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Shoujo+ai">
+                                        <i class="fas fa-circle"></i> Shoujo ai </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Shounen">
+                                        <i class="fas fa-circle"></i> Shounen </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Showbiz">
+                                        <i class="fas fa-circle"></i> Showbiz </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Slice+of+life">
+                                        <i class="fas fa-circle"></i> Slice of life </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Space">
+                                        <i class="fas fa-circle"></i> Space </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Sports">
+                                        <i class="fas fa-circle"></i> Sports </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Strategy+game">
+                                        <i class="fas fa-circle"></i> Strategy game </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Summer+2025">
+                                        <i class="fas fa-circle"></i> Summer 2025 </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Super+power">
+                                        <i class="fas fa-circle"></i> Super power </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Supernatural">
+                                        <i class="fas fa-circle"></i> Supernatural </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Survival">
+                                        <i class="fas fa-circle"></i> Survival </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Suspense">
+                                        <i class="fas fa-circle"></i> Suspense </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Team+sports">
+                                        <i class="fas fa-circle"></i> Team sports </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Thriller">
+                                        <i class="fas fa-circle"></i> Thriller </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Time+travel">
+                                        <i class="fas fa-circle"></i> Time travel </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Urban+fantasy">
+                                        <i class="fas fa-circle"></i> Urban fantasy </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Vampire">
+                                        <i class="fas fa-circle"></i> Vampire </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Video+game">
+                                        <i class="fas fa-circle"></i> Video game </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Villainess">
+                                        <i class="fas fa-circle"></i> Villainess </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Work+life">
+                                        <i class="fas fa-circle"></i> Work life </a>
+                                </li>
+                                <li>
+                                    <a href="https://myanimeku.com/web/genre/Workplace">
+                                        <i class="fas fa-circle"></i> Workplace </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #sidebar -->
+            </div>
+            <!-- .wrapper -->
+        </div>
+        <!-- #content -->
+        <script>
+            const Mycontainer = document.getElementById('anime-container');
+            const button = document.getElementById('load-more');
+            let currentPage = 1;
+            // Helper function to format date - FIXED TO SUPPORT COMMA FORMAT
+            function formatDate(dateString) {
+                // Validasi input
+                if (!dateString || dateString === '0000-00-00' || dateString === 'Unknown' || dateString === 'null' || dateString === null) {
+                    return null;
+                }
+                const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                // ==========================================
+                // COMPREHENSIVE MONTH MAPPING - SUPPORT SELAMANYA!
+                // Support: Indonesian, English, Case-insensitive
+                // ==========================================
+                const bulanIndo = {
+                    // Indonesian (Standard)
+                    'januari': '01',
+                    'februari': '02',
+                    'maret': '03',
+                    'april': '04',
+                    'mei': '05',
+                    'juni': '06',
+                    'juli': '07',
+                    'agustus': '08',
+                    'september': '09',
+                    'oktober': '10',
+                    'november': '11',
+                    'desember': '12',
+                    // English (Standard)
+                    'january': '01',
+                    'february': '02',
+                    'march': '03',
+                    'may': '05',
+                    'june': '06',
+                    'july': '07',
+                    'august': '08',
+                    'october': '10',
+                    'november': '11',
+                    'december': '12',
+                    // Short forms
+                    'jan': '01',
+                    'feb': '02',
+                    'mar': '03',
+                    'apr': '04',
+                    'jun': '06',
+                    'jul': '07',
+                    'aug': '08',
+                    'sep': '09',
+                    'oct': '10',
+                    'nov': '11',
+                    'dec': '12'
+                };
+                // FIXED: Support format dengan KOMA: "4 Oktober,2025" atau "4 Oktober 2025"
+                // Regex sekarang match: day + space + month + (optional space/comma) + year
+                const regexIndo = /(\d+)\s+(\w+)[,\s]+(\d+)/;
+                const matchIndo = dateString.match(regexIndo);
+                if (matchIndo) {
+                    const day = matchIndo[1].padStart(2, '0');
+                    const monthName = matchIndo[2].toLowerCase(); // CASE-INSENSITIVE!
+                    const year = matchIndo[3];
+                    const monthNum = bulanIndo[monthName];
+                    if (monthNum) {
+                        // Convert ke format ISO: "2025-10-04"
+                        dateString = `${year}-${monthNum}-${day}`;
+                    }
+                }
+                const date = new Date(dateString);
+                // Check if date is valid
+                if (isNaN(date.getTime())) {
+                    return null;
+                }
+                const day = date.getDate();
+                const month = months[date.getMonth()];
+                const year = date.getFullYear();
+                // Additional validation
+                if (isNaN(day) || isNaN(year) || !month) {
+                    return null;
+                }
+                return `${day} ${month} ${year}`;
+            }
+
+            function loadAnime(page) {
+                button.disabled = true;
+                button.innerHTML = `
+		<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXBreW95OTVvdTB2MXU4aGVvaWN4dnVhemkyaWM4N2hrNTZnenpwOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/11ASZtb7vdJagM/giphy.webp" alt="Loading..." style="height:50px;">`;
+                fetch(`https://myanimeku.com/anime/json_paginate/${page}`).then(res => res.json()).then(data => {
+                    if (data.length === 0) {
+                        button.innerText = "No more anime";
+                        button.disabled = true;
+                        return;
+                    }
+                    data.forEach(anime => {
+                        const el = document.createElement('article');
+                        el.className = "bs";
+                        el.setAttribute('itemscope', '');
+                        el.setAttribute('itemtype', 'http://schema.org/CreativeWork');
+                        const statusBadge = anime.status ? `
+			<div class="status ${anime.status.toLowerCase()}">${anime.status.toUpperCase()}</div>` : '';
+                        // NEW EP Badge - Ongoing Only
+                        const formattedDate = anime.latest_episode_date ? formatDate(anime.latest_episode_date) : null;
+                        const newEpBadge = (anime.status && anime.status.toLowerCase() === 'ongoing' && formattedDate) ? `
+			<div class="new-episode-badge">New > ${formattedDate}</div>` : '';
+                        const premiumBadge = anime.akses === 'Langganan' ? `
+			<div class="typem" style="background-color: #FF6B6B;">
+				<i class="fas fa-lock"></i> Premium
+			</div>` : '';
+                        // Episode Badge - Always show, "Ep ?" if unknown
+                        const episodeBadge = (anime.total_episode && anime.total_episode > 0) ? `
+			<div class="episode-count">Ep ${anime.total_episode}</div>` : `
+			<div class="episode-count">Ep ?</div>`;
+                        el.innerHTML = `
+          
+			<div class="bsx">
+				<a href="https://myanimeku.com/anime/${anime.slug}" itemprop="url" class="tip" rel="${anime.id || ''}" data-hasqtip="0">
+					<div class="limit">
+                ${statusBadge}
+                ${newEpBadge}
+                
+						<div class="typez">${anime.type ?? 'TV'}</div>
+                ${episodeBadge}
+                ${premiumBadge}
+                
+						<div class="ply">
+							<i class="far fa-play-circle"></i>
+						</div>
+						<img src="${anime.image}" class="ts-post-image" loading="lazy" itemprop="image" title="${anime.title}" alt="${anime.title}" width="350" height="490" />
+					</div>
+					<div class="tt">
+                ${anime.title}
+              </div>
+				</a>
+			</div>`;
+                        Mycontainer.appendChild(el);
+                    });
+                    button.disabled = false;
+                    button.innerText = "Next";
+                    currentPage++;
+                }).catch(err => {
+                    console.error(err);
+                    button.innerText = "Error";
+                });
+            }
+            // Load first page
+            loadAnime(currentPage);
+            // Load next when clicked
+            button.addEventListener('click', () => {
+                loadAnime(currentPage);
+            });
+        </script>
+        <footer style="background: linear-gradient(135deg, #2C3E50, #34495E); color: #ECF0F1; padding: 40px 20px 20px; font-family: 'Segoe UI', sans-serif; font-size: 14px; margin-top: 40px; box-shadow: 0 -4px 16px rgba(0,0,0,0.1);">
+            <div style="max-width: 1200px; margin: auto;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 30px;">
+                    <!-- Link Navigasi dalam satu baris -->
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 16px; font-weight: 600;">Navigasi</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                            <a href="/" style="color: #BDC3C7; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#4A90E2'" onmouseout="this.style.color='#BDC3C7'">Beranda</a>
+                            <a href="https://myanimeku.com/web/halaman/about" style="color: #BDC3C7; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#4A90E2'" onmouseout="this.style.color='#BDC3C7'">About</a>
+                            <a href="https://myanimeku.com/web/halaman/privacy-policy" style="color: #BDC3C7; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#4A90E2'" onmouseout="this.style.color='#BDC3C7'">Privacy Policy</a>
+                        </div>
+                    </div>
+                    <!-- Penafian -->
+                    <div style="flex: 2; min-width: 300px;">
+                        <h4 style="color: #fff; margin-bottom: 15px; font-size: 16px; font-weight: 600;">Disclaimer</h4>
+                        <p style="color: #BDC3C7; line-height: 1.8; font-size: 13px;">
+                            <strong style="color: #4A90E2;">MyAnimeKu</strong> adalah situs nonton anime subtitle Indonesia terlengkap. Kami tidak menyimpan file apa pun di server. Seluruh konten video dan gambar berasal dari pihak ketiga yang tidak berafiliasi dengan kami. Kami hanya menampilkan tautan embed yang tersedia secara publik di internet.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+                <!-- Copyright -->
+                <div style="text-align: center; color: #95A5A6; font-size: 13px;">
+                    <p style="margin: 0;">&copy; 2025 <strong style="color: #4A90E2;">MyAnimeKu</strong> - Nonton Anime Sub Indo Terlengkap. All Rights Reserved. </p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script>
+            //   Format Tanggal 
+            function formatTanggalSingkat(inputTanggal) {
+                const tanggal = new Date(inputTanggal);
+                const hari = tanggal.toLocaleDateString('id-ID', {
+                    weekday: 'long'
+                });
+                const tgl = tanggal.getDate();
+                const bulan = tanggal.toLocaleDateString('id-ID', {
+                    month: 'short'
+                });
+                const tahun = tanggal.getFullYear();
+                return `${hari}, ${tgl} ${bulan} ${tahun}`;
+            }
+            // Data Anime
+            // New Movie
+            fetch('https://myanimeku.com/json_movie_list').then(res => res.json()).then(data => {
+                const ul = document.getElementById('movie-list');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+          
+				<div class="imgseries">
+					<a class="series" href="https://myanimeku.com/anime/${item.slug}" rel="${item.id}">
+						<img src="${item.image}" class="ts-post-image" loading="lazy" title="${item.title}" alt="${item.title}" width="225" />
+					</a>
+				</div>
+				<div class="leftseries">
+					<h4>
+						<a class="series" href="https://myanimeku.com/anime/${item.slug}" rel="${item.id}">${item.title}</a>
+					</h4>
+					<span>
+						<b>Genres</b>: ${item.genre.split(',').map(g => `
+						<a href="https://myanimeku.com/web/genre/${g.trim()}">${g.trim()}</a>`).join(', ')}
+					</span>
+				</div>`;
+                    ul.appendChild(li);
+                });
+            });
+            // Filter
+            fetch('https://myanimeku.com/json_filter_options').then(res => res.json()).then(data => {
+                const buildList = (items, targetId, namePrefix) => {
+                    const target = document.getElementById(targetId);
+                    target.innerHTML = '';
+                    items.forEach(val => {
+                        const id = `${namePrefix}-${val.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+                        target.innerHTML += `
+            
+				<li>
+					<input type="checkbox" id="${id}" name="${namePrefix}[]" value="${val}" />
+					<label for="${id}">${val}</label>
+				</li>`;
+                    });
+                };
+                buildList(data.genres, 'genre-list', 'genre');
+                buildList(data.studios, 'studio-list', 'studio');
+                buildList(data.types, 'type-list', 'type');
+            });
+            // End Data Anime
+            document.addEventListener("DOMContentLoaded", function() {
+                const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+                dropdownToggles.forEach(function(toggle) {
+                    toggle.addEventListener("click", function() {
+                        const parent = this.closest(".dropdown");
+                        parent.classList.toggle("open");
+                    });
+                });
+                // Optional: close dropdown jika klik di luar
+                document.addEventListener("click", function(e) {
+                    document.querySelectorAll(".dropdown").forEach(function(dropdown) {
+                        if (!dropdown.contains(e.target)) {
+                            dropdown.classList.remove("open");
+                        }
+                    });
+                });
+            });
+            // Light mode toggle shadow overlay
+            $(document).ready(function() {
+                $("#shadow").css("height", $(document).height()).hide();
+                $(".light").click(function() {
+                    $("#shadow").toggle();
+                    if ($("#shadow").is(":hidden")) {
+                        $(this).html(" < i class = 'far fa-lightbulb' > < /i> < span > Turn Off Light < /span>").removeClass("turnedOff");
+                    } else {
+                        $(this).html(" < i class = 'fas fa-lightbulb' > < /i> < span > Turn On Light < /span>").addClass("turnedOff");
+                    }
+                });
+            });
+            $(document).ready(function() {
+                $(".loop").owlCarousel({
+                    center: true,
+                    loop: true,
+                    nav: true,
+                    navText: [" < span class = 'prev icon-angle-left' > < /span>",
+                        " < span class = 'next icon-angle-right' > < /span>",
+                    ],
+                    margin: 0,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            stagePadding: 0,
+                        },
+                    },
+                });
+            });
+            var dmlogo1 = "https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview.png";
+            var dmlogo2 = "https://myanimeku.com/img/1759396303_MyAnimeKu-Logo-removebg-preview1.png";
+            // fungsi untuk set mode
+            function setThemeMode(mode) {
+                if (mode === "darkmode") {
+                    jQuery(".logos img").attr("src", dmlogo1);
+                    jQuery("body").addClass("darkmode").removeClass("lightmode");
+                    jQuery("#thememode input[type='checkbox']").prop("checked", true);
+                } else {
+                    jQuery(".logos img").attr("src", dmlogo2);
+                    jQuery("body").addClass("lightmode").removeClass("darkmode");
+                    jQuery("#thememode input[type='checkbox']").prop("checked", false);
+                }
+            }
+            // ketika toggle
+            jQuery("#thememode input[type='checkbox']").on("change", function() {
+                var is_on = jQuery(this).prop("checked");
+                if (is_on) {
+                    localStorage.setItem("thememode", "darkmode");
+                    setThemeMode("darkmode");
+                } else {
+                    localStorage.setItem("thememode", "lightmode");
+                    setThemeMode("lightmode");
+                }
+            });
+            // saat halaman dimuat
+            jQuery(document).ready(function() {
+                        // cek localStorage
+                        var savedMode = localStorage.getItem("thememode") || "lightmode";
+                        setThemeMode(savedMode);
+                        // logika lampu
+                        $("#shadow").css("height", $(document).height()).hide();
+                        $(".light").click(function() {
+                            $("#shadow").toggle();
+                            if ($("#shadow").is(":hidden")) {
+                                $(this).html(" < i class = 'far fa-lightbulb' > < /i> < span > Turn Off Light < /span>").removeClass("turnedOff");
+                                }
+                                else {
+                                    $(this).html(" < i class = 'fas fa-lightbulb' > < /i> < span > Turn On Light < /span>").addClass("turnedOff");
+                                    }
+                                });
+                        });
+                        $(document).ready(function() {
+                            $(".shme").click(function() {
+                                $(".mm").toggleClass("shwx");
+                            });
+                            $(".expand").click(function() {
+                                $(".megavid").toggleClass("xp");
+                                $(".pd-expand").toggleClass("sxp");
+                            });
+                            $(".expand").click(function() {
+                                if ($(".expand").hasClass("slamdown")) {
+                                    $(".expand").removeClass("slamdown");
+                                    jQuery(".mvelement").prependTo(jQuery(".megavid"));
+                                } else {
+                                    $(".expand").addClass("slamdown");
+                                    jQuery(".mvelement").appendTo(jQuery(".pd-expand"));
+                                }
+                            });
+                            $(".gnr").click(function() {
+                                $(".gnrx").toggleClass("shwgx");
+                            });
+                            $(".light").click(function() {
+                                $(".lowvid").toggleClass("highvid");
+                            });
+                            $(".colap").click(function() {
+                                $(".mindes").toggleClass("alldes");
+                            });
+                            $(".topmobile").click(function() {
+                                $(".topmobcon").toggleClass("topmobshow");
+                            });
+                            $(".toggler").click(function() {
+                                $(".inmenu").toggleClass("inmshow");
+                            });
+                            $(".twoscmob").click(function() {
+                                $(".searchdesk").toggleClass("searchmobi");
+                            });
+                            $(".srcmob").click(function() {
+                                $(".minmb").toggleClass("minmbx");
+                            });
+                        });
+        </script>
+        <script>
+            $(document).ready(function() {
+                // Old carousel (if any)
+                $(".full-cover-carousel").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    margin: 10,
+                    nav: true,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    navText: [" < span class = 'prev icon-angle-left' > ‹ < /span>",
+                        " < span class = 'next icon-angle-right' > › < /span>",
+                    ],
+                });
+                // Modern Slider AnimeIndo Style
+                $(".modern-anime-slider").owlCarousel({
+                    items: 1,
+                    loop: true,
+                    margin: 0,
+                    nav: true,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 6000,
+                    autoplayHoverPause: true,
+                    animateOut: 'fadeOut',
+                    animateIn: 'fadeIn',
+                    smartSpeed: 800,
+                    navText: [" < i class = 'fas fa-chevron-left' > < /i>",
+                        " < i class = 'fas fa-chevron-right' > < /i>",
+                    ],
+                    responsive: {
+                        0: {
+                            nav: false,
+                            dots: true
+                        },
+                        768: {
+                            nav: true,
+                            dots: true
+                        }
+                    }
+                });
+            });
+        </script>
+        <!-- Bottom Navigation Mobile -->
+        <nav class="bottom-nav-mobile">
+            <a href="https://myanimeku.com/" class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" id="mobile-search-trigger">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </a>
+            <a href="https://myanimeku.com/web/filter" class="nav-item ">
+                <i class="fas fa-filter"></i>
+                <span>Filter</span>
+            </a>
+            <a href="javascript:void(0)" class="nav-item" id="mobile-menu-trigger">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </a>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <h3>Menu</h3>
+                    <button class="close-mobile-menu" id="close-mobile-menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <ul class="mobile-menu-list">
+                    <li>
+                        <a href="https://myanimeku.com/">
+                            <i class="fas fa-home"></i> Beranda </a>
+                    </li>
+                    <li>
+                        <a href="https://myanimeku.com/web/bookmark">
+                            <i class="fas fa-bookmark"></i> Bookmark </a>
+                    </li>
+                    <li>
+                        <a href="https://myanimeku.com/web/ongoing">
+                            <i class="fas fa-tv"></i> Ongoing Series </a>
+                    </li>
+                    <li>
+                        <a href="https://myanimeku.com/web/member">
+                            <i class="fas fa-crown"></i> Member Premium </a>
+                    </li>
+                    <li>
+                        <a href="https://myanimeku.com/web/login">
+                            <i class="fas fa-sign-in-alt"></i> Login </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            // Mobile menu toggle
+            jQuery(document).ready(function($) {
+                $('#mobile-menu-trigger').click(function() {
+                    $('#mobile-menu-overlay').addClass('active');
+                    $('body').css('overflow', 'hidden');
+                });
+                $('#close-mobile-menu, #mobile-menu-overlay').click(function(e) {
+                    if (e.target === this) {
+                        $('#mobile-menu-overlay').removeClass('active');
+                        $('body').css('overflow', 'auto');
+                    }
+                });
+                // Mobile search trigger (reuse existing search icon functionality)
+                $('#mobile-search-trigger').click(function() {
+                    $('.srcmob-icon').click();
+                });
+            });
+            // 🔥 POPULAR TODAY GRID FIX - Fallback JavaScript
+            $(document).ready(function() {
+                function applyPopularTodayGrid() {
+                    var windowWidth = $(window).width();
+                    var $popularGrid = $('#popular-today-section .excstf, .excstf.popular-today-grid');
+                    if (windowWidth <= 480) {
+                        // Small Mobile: 3 kolom
+                        $popularGrid.css('grid-template-columns', 'repeat(3, 1fr)');
+                        $popularGrid.css('gap', '5px');
+                    } else if (windowWidth <= 768) {
+                        // Mobile: 3 kolom
+                        $popularGrid.css('grid-template-columns', 'repeat(3, 1fr)');
+                        $popularGrid.css('gap', '6px');
+                    } else if (windowWidth <= 992) {
+                        // Tablet: 5 kolom
+                        $popularGrid.css('grid-template-columns', 'repeat(5, 1fr)');
+                        $popularGrid.css('gap', '8px');
+                    } else {
+                        // Desktop: 6 kolom
+                        $popularGrid.css('grid-template-columns', 'repeat(6, 1fr)');
+                        $popularGrid.css('gap', '10px');
+                    }
+                    console.log('Popular Today Grid Applied - Width: ' + windowWidth + ', Columns: ' + $popularGrid.css('grid-template-columns'));
+                }
+                // Apply on load
+                applyPopularTodayGrid();
+                // Apply on resize
+                $(window).on('resize', function() {
+                    applyPopularTodayGrid();
+                });
+            });
+        </script>
+    </body>
+</html>
